@@ -21,6 +21,23 @@ if (navigationLinks.length > 0) {
     link.addEventListener("click", () => {
       navigationLinks.forEach((item) => item.classList.remove("active"));
       link.classList.add("active");
+
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("nav-menu");
+      if (hamburger && navMenu) {
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+      }
     });
+  });
+}
+
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    hamburger.classList.toggle("active");
   });
 }
