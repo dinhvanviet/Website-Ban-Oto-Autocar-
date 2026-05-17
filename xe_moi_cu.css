@@ -1,0 +1,935 @@
+/* =========================================
+   1. KHỞI TẠO & BIẾN CSS (RESET & VARIABLES)
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+:root {
+  --primary-color: #8b5cf6;
+  --secondary-color: #ef4444;
+  --bg-dark: #0f172a;
+  --bg-light: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* =========================================
+   2. HEADER & ĐIỀU HƯỚNG (PHIÊN BẢN CŨ)
+   Lưu ý: Phần này có thể đang bị ghi đè bởi 
+   phần "ĐỒNG BỘ HEADER VỚI INDEX" ở cuối file.
+   ========================================= */
+.header {
+  background: linear-gradient(135deg, rgb(4, 4, 44) 0%, rgb(4, 4, 44) 100%);
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.search-btn:hover {
+  background: #dc2626;
+}
+
+/* Nút bật tắt bộ lọc trên Mobile */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 200;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* =========================================
+   3. BỐ CỤC CHÍNH & SIDEBAR (BỘ LỌC)
+   ========================================= */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+/* Sidebar hiển thị bộ lọc */
+.sidebar {
+  width: 280px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 25px;
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  box-shadow: var(--shadow);
+}
+
+.sidebar-close {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+.filter-section {
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tùy chỉnh Checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-primary);
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.checkbox-label:hover {
+  color: var(--primary-color);
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+/* Tùy chỉnh Select Box */
+.filter-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Tùy chỉnh thanh trượt (Slider) */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-color);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--shadow);
+}
+
+.slider-value {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Nút áp dụng bộ lọc */
+.apply-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 20px;
+}
+
+.apply-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =========================================
+   4. NỘI DUNG CHÍNH (DANH SÁCH XE)
+   ========================================= */
+.main-content {
+  flex: 1;
+}
+
+.cars-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 20px;
+}
+
+/* Tabs trên cùng */
+.top-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.top-tab {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #e5e7eb;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.top-tab:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top-tab.active {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #6d28d9 100%);
+  color: white;
+}
+
+/* Grid hiển thị thẻ xe */
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* =========================================
+   5. THẺ SẢN PHẨM (CAR CARD)
+   ========================================= */
+.car-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.car-image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: var(--bg-light);
+  overflow: hidden;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.car-card:hover .car-image {
+  transform: scale(1.05);
+}
+
+/* Badge Mới / Cũ */
+.car-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.badge-new {
+  background: var(--secondary-color);
+}
+
+.badge-used {
+  background: #9ca3af;
+}
+
+.car-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.car-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.car-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.car-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  background: var(--bg-light);
+  border-radius: 6px;
+}
+
+.car-details {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.details-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.details-label {
+  font-weight: 600;
+}
+
+/* Nút hành động trên Card */
+.car-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.detail-btn {
+  flex: 1;
+  padding: 10px 15px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.detail-btn:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.contact-btn {
+  flex: 1;
+  padding: 10px 15px;
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.contact-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+/* Trạng thái không tìm thấy xe */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* =========================================
+   6. CỬA SỔ HIỂN THỊ CHI TIẾT (MODAL)
+   ========================================= */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border-radius: 12px;
+  width: 90% !important;
+  max-width: 800px !important;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  z-index: 10;
+  background: var(--bg-light);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 40px 30px 30px;
+}
+
+.modal-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.modal-price {
+  font-size: 28px;
+  color: var(--secondary-color);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.modal-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.info-item {
+  padding: 18px;
+  background: #f2f2f2;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #4b5563;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.info-value {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.modal-description {
+  padding: 15px;
+  background: var(--bg-light);
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-actions button:hover {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.modal-actions .detail-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.modal-actions .detail-btn:hover {
+  background: #7c3aed;
+}
+
+.modal-actions .contact-btn {
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+}
+
+.modal-actions .contact-btn:hover {
+  background: #dc2626;
+}
+
+/* =========================================
+   7. ĐÁP ỨNG THIẾT BỊ (RESPONSIVE)
+   ========================================= */
+
+/* Tablet (dưới 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    gap: 20px;
+    padding: 15px;
+  }
+  .sidebar {
+    width: 250px;
+    padding: 20px;
+  }
+  .cars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .search-bar {
+    max-width: 100%;
+  }
+}
+
+/* Mobile lớn (dưới 768px) */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+  .container {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Sidebar trượt từ trái sang trên Mobile */
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 250;
+    border-radius: 0;
+    box-shadow: var(--shadow-hover);
+    transition: left 0.3s ease;
+  }
+  .sidebar.show {
+    left: 0;
+  }
+  .sidebar-close {
+    display: block;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+  .cars-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .header {
+    padding: 15px 0;
+  }
+  .header-content {
+    padding: 0 15px;
+  }
+  .logo h1 {
+    font-size: 22px;
+  }
+  .search-bar {
+    flex: 1;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .cars-section {
+    margin-bottom: 40px;
+  }
+
+  /* Đổi bố cục Card nằm ngang trên Mobile */
+  .car-card {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    height: fit-content;
+  }
+  .car-image-container {
+    height: 150px;
+  }
+  .car-content {
+    padding: 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+  .modal-body {
+    padding: 30px 20px 20px;
+  }
+  .modal-image {
+    height: 250px;
+    margin-bottom: 20px;
+  }
+  .modal-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Mobile nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 18px;
+  }
+  .logo p {
+    display: none;
+  }
+  .section-title {
+    font-size: 18px;
+  }
+  .car-name {
+    font-size: 14px;
+  }
+  .car-price {
+    font-size: 16px;
+  }
+  .modal-title {
+    font-size: 20px;
+  }
+  .modal-price {
+    font-size: 24px;
+  }
+  .top-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #6a5af9, #8e44ad);
+  }
+}
+
+/* =========================================
+   8. ĐỒNG BỘ HEADER VỚI INDEX 
+   (Phần này đang được sử dụng chính thức 
+   cho thẻ <header> trong file HTML của bạn)
+   ========================================= */
+header {
+  background: rgb(4, 4, 44);
+  color: #fff;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ff3e3e;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ff3e3e;
+}
+
+/* Phần tìm kiếm & Đăng nhập */
+.search-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-auth input {
+  padding: 0 15px;
+  height: 36px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #fff;
+  color: #0e0e0e;
+  box-sizing: border-box;
+}
+
+.btn-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  background: #ff3e3e;
+  padding: 0 18px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: #e60000;
+}
+
+/* Hamburger Menu cho Mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 600px) {
+  .hamburger {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 5%;
+  }
+  .search-auth {
+    display: none;
+  }
+  #nav-menu {
+    display: none;
+  }
+  #nav-menu.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgb(4, 4, 44);
+    padding: 10px 0;
+    z-index: 1001;
+  }
+  #nav-menu.active ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

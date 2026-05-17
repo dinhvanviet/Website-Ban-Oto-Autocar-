@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoCar - Giới Thiệu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stylegioithieu.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">AUTOCAR</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="xemoi.html">Xe mới</a></li>
+          <li><a href="xecu.html">Xe cũ</a></li>
+          <li><a href="gioithieu.html">Giới thiệu</a></li>
+          <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="search-auth">
+        <input type="text" id="searchInput" placeholder="Tìm xe..." />
+        <a href="dangnhap.html" class="btn-login">Đăng nhập</a>
+      </div>
+    </header>
+    <div class="main-container">
+      <div class="content-wrapper">
+        <div class="col-left">
+          <div class="logo-section">
+            <span class="logo-char">A</span>
+            <div class="brand-name">
+              <h1>AUTOCAR</h1>
+              <p class="brand-tagline">CHÚNG TÔI LÀ AI?</p>
+            </div>
+          </div>
+
+          <img src="show.jpg" alt="Showroom" class="promo-image" />
+
+          <div class="mission-section">
+            <h2 class="mission-title">SỨ MỆNH</h2>
+            <div class="red-line"></div>
+            <p class="mission-text italic">
+              Cung cấp giải pháp di chuyển tối ưu, mang lại sự an tâm và giá trị
+              vượt trội cho mọi hành trình của khách hàng.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-right">
+          <h2 class="main-title">GIỚI THIỆU</h2>
+
+          <div class="info-box">
+            <h3>TẦM NHÌN</h3>
+            <p class="italic">
+              Trở thành hệ thống phân phối ô tô hàng đầu, nơi khách hàng không
+              chỉ đến để mua một phương tiện, mà để trải nghiệm một phong cách
+              sống. Chúng tôi hướng tới việc số hóa quy trình mua bán và chăm
+              sóc xe, giúp việc sở hữu một chiếc xe mơ ước trở nên đơn giản,
+              minh bạch và đầy cảm hứng.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <h3>SỨ MỆNH</h3>
+            <p class="italic">
+              Mang đến những dòng xe minh bạch, chất lượng và dịch vụ tận tâm
+              cho khách hàng,Sứ mệnh của chúng tôi không chỉ dừng lại ở việc đưa
+              những chiếc xe tốt nhất đến tay khách hàng. Chúng tôi tồn tại để
+              đồng hành cùng bạn trên mọi hành trình, đảm bảo sự an toàn, tiện
+              nghi và phản ánh đúng đẳng cấp của chủ sở hữu qua từng dòng xe
+              được tuyển chọn khắt khe.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">5000+</div>
+              <div class="stat-label">XE ĐÃ BÁN</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">NĂM KINH NGHIỆM</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">99%</div>
+              <div class="stat-label">KHÁCH HÀNG HÀI LÒNG</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+                </div>
+
+                <h3 class="section-sub-title">GIÁ TRỊ CỐT LÕI</h3>
+                <div class="values-grid">
+                    <div class="value-item"><div>🛡️</div><span>UY TÍN</span></div>
+                    <div class="value-item"><div>💎</div><span>MINH BẠCH</span></div>
+                    <div class="value-item"><div>🤝</div><span>CHUYÊN NGHIỆP</span></div>
+                </div>
+
+                <button class="btn-primary" onclick="openModal('TÌM HIỂU THÊM', 'AutoCar là hệ thống phân phối xe hơi lớn nhất miền Bắc với hơn 20 chi nhánh trên toàn quốc.')">
+                    TÌM HIỂU THÊM
+                </button>
+            </div>
+        </div>
+
+       <footer>
+           <p>&copy; 2026 AutoCar.Mọi quyền được bảo lưu.</p>
+           <p class="footer-sub">Hà Nội, Việt Nam | Hotline:<span>0921900689</span> |
+        <span>0836999123</span>
+           </p>
+       </footer>
+    </div>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <div class="modal-line"></div>
+            <p id="modalBody"></p>
+            <button class="btn-close" onclick="closeModal()">ĐÓNG</button>
+        </div>
+    </div>
+
+    <script src="modal.js"></script>
+    <script src="nav-active-state.js"></script>
+  </body>
+</html>

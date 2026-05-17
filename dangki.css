@@ -1,0 +1,20 @@
+.login-container {
+  padding: 40px 20px; /* Tăng padding để khi cuộn trang dễ nhìn hơn */
+}
+
+.login-box {
+  /* Cho phép khung co giãn theo nội dung nhưng không quá rộng */
+  max-height: none;
+}
+
+/* Tùy chỉnh riêng cho checkbox điều khoản */
+.options label {
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+/* Hiệu ứng khi focus vào ô nhập liệu */
+input:focus {
+  border-color: #ff3e3e;
+  outline: none;
+}

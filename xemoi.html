@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xe Mới - AutoCar</title>
+    <link rel="stylesheet" href="xe_moi_cu.css" />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">AUTOCAR</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="xemoi.html?type=new">Xe mới</a></li>
+          <li><a href="xecu.html?type=used">Xe cũ</a></li>
+          <li><a href="gioithieu.html?type=used">Giới thiệu</a></li>
+          <li><a href="lienhe.html?type=used">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <div class="search-auth">
+        <input type="text" id="searchInput" placeholder="Tìm xe..." />
+        <a href="dangnhap.html" class="btn-login">Đăng nhập</a>
+      </div>
+    </header>
+
+    <!-- Toggle Sidebar Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰ Lọc</button>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Sidebar (Filters) -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+
+        <!-- Brand Filter -->
+        <div class="filter-section">
+          <h3 class="filter-title">Hãng xe</h3>
+          <div class="filter-group">
+            <label class="checkbox-label">
+              <input type="checkbox" value="Toyota" class="brand-filter" />
+              <span>Toyota</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" value="Ford" class="brand-filter" />
+              <span>Ford</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" value="Hyundai" class="brand-filter" />
+              <span>Hyundai</span>
+            </label>
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                value="Mercedes-Benz"
+                class="brand-filter"
+              />
+              <span>Mercedes-Benz</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" value="BMW" class="brand-filter" />
+              <span>BMW</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" value="Kia" class="brand-filter" />
+              <span>Kia</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" value="Mazda" class="brand-filter" />
+              <span>Mazda</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" value="Honda" class="brand-filter" />
+              <span>Honda</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Price Range Filter -->
+        <div class="filter-section">
+          <h3 class="filter-title">Khoảng giá</h3>
+          <select id="priceFilter" class="filter-select">
+            <option value="all">Tất cả mức giá</option>
+            <option value="0-500">Dưới 500 triệu</option>
+            <option value="500-1000">500 triệu - 1 tỷ</option>
+            <option value="1000+">Trên 1 tỷ</option>
+          </select>
+        </div>
+
+        <!-- Sort -->
+        <div class="filter-section">
+          <h3 class="filter-title">Sắp xếp</h3>
+          <select id="sortFilter" class="filter-select">
+            <option value="default">Mặc định</option>
+            <option value="price-asc">Giá: thấp → cao</option>
+            <option value="price-desc">Giá: cao → thấp</option>
+          </select>
+        </div>
+
+        <!-- Apply Button -->
+        <button class="apply-btn" id="applyBtn">Áp dụng</button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- New Cars Section -->
+        <section class="cars-section">
+          <div class="section-header">
+            <h2 class="section-title">🆕 Xe Mới Đang Bán</h2>
+          </div>
+          <div class="cars-grid" id="newCarsGrid">
+            <!-- Cars will be inserted here by JavaScript -->
+          </div>
+        </section>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none">
+          <p>😕 Không tìm thấy xe mới nào phù hợp với tiêu chí tìm kiếm</p>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal (Detail View) -->
+    <div class="modal" id="detailModal">
+      <div class="modal-content">
+        <div class="modal-close" id="modalClose">✕</div>
+        <div class="modal-body" id="modalBody">
+          <!-- Car details will be inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close">×</button>
+        <div class="modal-header">
+          <span class="modal-logo">AUTOCAR</span>
+          <h2>Chào mừng trở lại!</h2>
+          <p>Vui lòng đăng nhập để tiếp tục</p>
+        </div>
+
+        <form onsubmit="event.preventDefault()">
+          <div class="form-group">
+            <label for="loginEmail">Email hoặc Số điện thoại</label>
+            <input
+              type="text"
+              id="loginEmail"
+              placeholder="Nhập email của bạn"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Nhập mật khẩu"
+              required
+            />
+          </div>
+
+          <div class="form-options">
+            <label>
+              <input type="checkbox" />
+              Ghi nhớ đăng nhập
+            </label>
+            <a href="#">Quên mật khẩu?</a>
+          </div>
+
+          <button type="submit" class="form-submit">ĐĂNG NHẬP</button>
+        </form>
+
+        <div class="form-footer">
+          Chưa có tài khoản? <a class="switch-to-register">Đăng kí ngay</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close">×</button>
+        <div class="modal-header">
+          <span class="modal-logo">AUTOCAR</span>
+          <h2>Tạo tài khoản mới</h2>
+          <p>Gia nhập cộng đồng yêu xe ngay hôm nay</p>
+        </div>
+
+        <form onsubmit="event.preventDefault()">
+          <div class="form-group">
+            <label for="registerName">Họ và Tên</label>
+            <input
+              type="text"
+              id="registerName"
+              placeholder="Nguyễn Văn A"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerPhone">Số điện thoại</label>
+            <input
+              type="tel"
+              id="registerPhone"
+              placeholder="090xxxxxxx"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input
+              type="email"
+              id="registerEmail"
+              placeholder="example@gmail.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="registerPassword"
+              placeholder="Tối thiểu 8 ký tự"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerConfirmPassword">Xác nhận mật khẩu</label>
+            <input
+              type="password"
+              id="registerConfirmPassword"
+              placeholder="Nhập lại mật khẩu"
+              required
+            />
+          </div>
+
+          <div class="form-options">
+            <label>
+              <input type="checkbox" required />
+              Tôi đồng ý với điều khoản dịch vụ
+            </label>
+          </div>
+
+          <button type="submit" class="form-submit">ĐĂNG KÝ</button>
+        </form>
+
+        <div class="form-footer">
+          Đã có tài khoản? <a class="switch-to-login">Đăng nhập</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="xemoi-script.js"></script>
+    <script src="modal.js"></script>
+    <script src="nav-active-state.js"></script>
+  </body>
+</html>

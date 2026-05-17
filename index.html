@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoCar - Hệ thống bán lẻ ô tô</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">AUTOCAR</div>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="xemoi.html?type=new">Xe mới</a></li>
+          <li><a href="xecu.html?type=used">Xe cũ</a></li>
+          <li><a href="gioithieu.html">Giới thiệu</a></li>
+          <li><a href="lienhe.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="search-auth">
+        <input type="text" id="searchInput" placeholder="Tìm xe..." />
+        <a href="dangnhap.html" class="btn-login">Đăng nhập</a>
+      </div>
+    </header>
+
+    <section class="banner">
+      <h1>Khám Phá Chiếc Xe Ước Mơ</h1>
+      <p>Hàng ngàn mẫu xe mới và cũ đang chờ đợi bạn</p>
+    </section>
+
+    <section class="brands">
+      <h2>Hãng Xe Nổi Bật</h2>
+      <div class="brand-list">
+        <div class="brand-item" data-brand="TOYOTA">TOYOTA</div>
+        <div class="brand-item" data-brand="HONDA">HONDA</div>
+        <div class="brand-item" data-brand="MERCEDES">MERCEDES</div>
+        <div class="brand-item" data-brand="FORD">FORD</div>
+        <div class="brand-item" data-brand="BMW">BMW</div>
+        <div class="brand-item" data-brand="HYUNDAI">HYUNDAI</div>
+      </div>
+      <div id="brandInfo" class="brand-info news-card">
+        <div class="news-content">
+          <h3>Nhấn vào một hãng xe để xem thông tin nổi bật</h3>
+          <p class="brand-description">
+            Chọn TOYOTA, HONDA, MERCEDES, FORD, BMW hoặc HYUNDAI để xem ưu điểm
+            và mẫu nổi bật.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="news-section">
+      <div class="section-title">
+        <h2>Tin Tức Nổi Bật</h2>
+        <a href="#" class="view-all">Xem tất cả bài viết →</a>
+      </div>
+      <div class="news-container">
+        <article class="news-card">
+          <img src="tt1.jpg" alt="Tin tức 1" />
+          <div class="news-content">
+            <h3>Đánh giá xe Ford Ranger 2024</h3>
+            <p>
+              Mẫu bán tải ăn khách nhất thị trường vừa ra mắt phiên bản mới với
+              nhiều nâng cấp...
+            </p>
+            <button onclick="showNewsDetail(1)" class="btn-view-more">
+              Xem thêm
+            </button>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <img src="tt2.jpg" alt="Tin tức 2" />
+          <div class="news-content">
+            <h3>Thị trường ô tô cũ tháng 3</h3>
+            <p>
+              Giá xe cũ đang có xu hướng giảm mạnh, đây là thời điểm vàng để sở
+              hữu xe...
+            </p>
+            <button onclick="showNewsDetail(2)" class="btn-view-more">
+              Xem thêm
+            </button>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <img src="tt3.jpg" alt="Tin tức 3" />
+          <div class="news-content">
+            <h3>Xe điện: Xu hướng tương lai</h3>
+            <p>
+              Nhiều trạm sạc đang được phủ sóng toàn quốc, thúc đẩy chuyển đổi
+              xe xanh...
+            </p>
+            <button onclick="showNewsDetail(3)" class="btn-view-more">
+              Xem thêm
+            </button>
+          </div>
+        </article>
+      </div>
+    </section>
+    <div id="detailModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="modalClose">&times;</span>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="news.js"></script>
+    <script src="nav-active-state.js"></script>
+    <script>
+      const brandInfo = document.getElementById("brandInfo");
+      const brandItems = document.querySelectorAll(".brand-item");
+
+      const brandDetails = {
+        TOYOTA: {
+          title: "TOYOTA - Bền bỉ & tiết kiệm",
+          description:
+            "Toyota là thương hiệu Nhật Bản được tin dùng nhờ độ bền cao, tiết kiệm nhiên liệu và chi phí vận hành thấp.",
+          points: [
+            "Ưu điểm: bền bỉ, ít hỏng vặt, phụ tùng dễ tìm",
+            "Mẫu nổi bật: Camry, Vios, Corolla Cross",
+            "Phù hợp: gia đình, chạy dịch vụ, đi lại hàng ngày",
+          ],
+        },
+        HONDA: {
+          title: "HONDA - Thể thao & linh hoạt",
+          description:
+            "Honda nổi tiếng với động cơ VTEC mạnh mẽ, khả năng vận hành linh hoạt và thiết kế hiện đại.",
+          points: [
+            "Ưu điểm: tăng tốc mượt mà, cabin yên tĩnh",
+            "Mẫu nổi bật: City, Civic, CR-V",
+            "Phù hợp: người trẻ, gia đình nhỏ, đi phố và đường trường",
+          ],
+        },
+        MERCEDES: {
+          title: "MERCEDES - Sang trọng & an toàn",
+          description:
+            "Mercedes là biểu tượng của xe sang Đức, tập trung vào công nghệ an toàn và trải nghiệm lái cao cấp.",
+          points: [
+            "Ưu điểm: nội thất cao cấp, trang bị công nghệ hiện đại",
+            "Mẫu nổi bật: C-Class, E-Class, GLC",
+            "Phù hợp: doanh nhân, gia đình sang trọng, trải nghiệm cao cấp",
+          ],
+        },
+        FORD: {
+          title: "FORD - Mạnh mẽ & đa dụng",
+          description:
+            "Ford nổi bật với các dòng SUV và bán tải mạnh mẽ, phù hợp cho cả thành phố và các chuyến đi xa.",
+          points: [
+            "Ưu điểm: sức kéo tốt, thiết kế chắc chắn",
+            "Mẫu nổi bật: Ranger, Everest, EcoSport",
+            "Phù hợp: gia đình đông người, khách hàng cần xe khỏe",
+          ],
+        },
+        BMW: {
+          title: "BMW - Thể thao & sang trọng",
+          description:
+            "BMW được biết đến với cảm giác lái thể thao, động cơ mạnh mẽ và phong cách thiết kế hiện đại.",
+          points: [
+            "Ưu điểm: điều khiển linh hoạt, thiết kế năng động",
+            "Mẫu nổi bật: 3 Series, X5, 5 Series",
+            "Phù hợp: người yêu lái xe, xe công ty cao cấp",
+          ],
+        },
+        HYUNDAI: {
+          title: "HYUNDAI - Tiện nghi & giá tốt",
+          description:
+            "Hyundai mang đến các mẫu xe có thiết kế trẻ trung, nhiều trang bị và giá thành hợp lý.",
+          points: [
+            "Ưu điểm: nhiều tính năng, bảo hành tốt",
+            "Mẫu nổi bật: Santa Fe, Accent, Tucson",
+            "Phù hợp: gia đình trẻ, người mua xe lần đầu",
+          ],
+        },
+      };
+
+      function renderBrandDetail(brand) {
+        const brandData = brandDetails[brand];
+        if (!brandData) return;
+
+        brandItems.forEach((item) => {
+          item.classList.toggle("active", item.dataset.brand === brand);
+        });
+
+        brandInfo.innerHTML = `
+          <div class="news-content">
+            <h3>${brandData.title}</h3>
+            <p>${brandData.description}</p>
+            <ul>
+              ${brandData.points.map((point) => `<li>${point}</li>`).join("")}
+            </ul>
+          </div>
+        `;
+      }
+
+      brandItems.forEach((item) => {
+        item.addEventListener("click", () =>
+          renderBrandDetail(item.dataset.brand),
+        );
+      });
+    </script>
+
+    <footer>
+      <p>&copy; 2026 AutoCar. Mọi quyền được bảo lưu.</p>
+      <p class="footer-sub">
+        Hà Nội, Việt Nam | Hotline: <span>0921900689</span> |
+        <span>0836999123</span>
+      </p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close">×</button>
+        <div class="modal-header">
+          <span class="modal-logo">AUTOCAR</span>
+          <h2>Chào mừng trở lại!</h2>
+          <p>Vui lòng đăng nhập để tiếp tục</p>
+        </div>
+
+        <form onsubmit="event.preventDefault()">
+          <div class="form-group">
+            <label for="loginEmail">Email hoặc Số điện thoại</label>
+            <input
+              type="text"
+              id="loginEmail"
+              placeholder="Nhập email của bạn"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Nhập mật khẩu"
+              required
+            />
+          </div>
+
+          <div class="form-options">
+            <label>
+              <input type="checkbox" />
+              Ghi nhớ đăng nhập
+            </label>
+            <a href="#">Quên mật khẩu?</a>
+          </div>
+
+          <button type="submit" class="form-submit">ĐĂNG NHẬP</button>
+        </form>
+
+        <div class="form-footer">
+          Chưa có tài khoản? <a class="switch-to-register">Đăng kí ngay</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close">×</button>
+        <div class="modal-header">
+          <span class="modal-logo">AUTOCAR</span>
+          <h2>Tạo tài khoản mới</h2>
+          <p>Gia nhập cộng đồng yêu xe ngay hôm nay</p>
+        </div>
+
+        <form onsubmit="event.preventDefault()">
+          <div class="form-group">
+            <label for="registerName">Họ và Tên</label>
+            <input
+              type="text"
+              id="registerName"
+              placeholder="Nguyễn Văn A"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerPhone">Số điện thoại</label>
+            <input
+              type="tel"
+              id="registerPhone"
+              placeholder="090xxxxxxx"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input
+              type="email"
+              id="registerEmail"
+              placeholder="example@gmail.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="registerPassword"
+              placeholder="Tối thiểu 8 ký tự"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="registerConfirmPassword">Xác nhận mật khẩu</label>
+            <input
+              type="password"
+              id="registerConfirmPassword"
+              placeholder="Nhập lại mật khẩu"
+              required
+            />
+          </div>
+
+          <div class="form-options">
+            <label>
+              <input type="checkbox" required />
+              Tôi đồng ý với điều khoản dịch vụ
+            </label>
+          </div>
+
+          <button type="submit" class="form-submit">ĐĂNG KÝ</button>
+        </form>
+
+        <div class="form-footer">
+          Đã có tài khoản? <a class="switch-to-login">Đăng nhập</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="modal.js"></script>
+  </body>
+</html>

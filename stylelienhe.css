@@ -1,0 +1,240 @@
+/* 1. Reset định dạng mặc định của trình duyệt */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background: rgb(4, 4, 44);
+  color: #fff;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ff3e3e;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  font-weight: 500;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #ff3e3e;
+}
+
+.search-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-auth input {
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.btn-login {
+  background: #ff3e3e;
+  padding: 7px 18px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+}
+
+/* 2. Container chính - Tràn toàn bộ màn hình */
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh; /* Cao bằng toàn bộ màn hình trình duyệt */
+  padding: 60px; /* Khoảng cách từ nội dung đến mép màn hình */
+  gap: 50px; /* Khoảng cách giữa 2 cột */
+}
+
+/* 3. Cột bên trái: Thông tin & Form */
+.contact-info {
+  flex: 1; /* Chiếm 50% chiều rộng */
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* Lưới thông tin địa chỉ/hotline */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.info-item i {
+  color: #b72027; /* Màu đỏ thương hiệu */
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+/* Phần Form */
+.form-title {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 3px solid #b72027;
+  display: inline-block;
+  padding-bottom: 8px;
+  margin-bottom: 25px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  font-size: 15px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #b72027;
+}
+
+.contact-form button {
+  background-color: #000;
+  color: #fff;
+  padding: 15px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.contact-form button:hover {
+  background-color: #333;
+}
+
+/* 4. Cột bên phải: Bản đồ */
+.contact-map {
+  flex: 1; /* Chiếm 50% còn lại */
+  display: flex;
+  flex-direction: column;
+}
+
+.map-container {
+  flex-grow: 1; /* Kéo dài bản đồ để khớp với chiều cao cột trái */
+  width: 100%;
+  border: 1px solid #eee;
+  min-height: 500px; /* Đảm bảo không bị quá nhỏ trên màn hình thấp */
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* 5. Tương thích điện thoại (Responsive) */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Xếp chồng khi màn hình nhỏ */
+    padding: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr; /* Thông tin xếp dọc trên mobile */
+  }
+}
+footer {
+  background: rgb(4, 4, 44);
+  color: #777;
+  padding: 40px 5%;
+  text-align: center;
+  border-top: 4px solid #ff3e3e;
+}
+
+.footer-sub {
+  margin-top: 15px;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .news-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .news-container {
+    grid-template-columns: 1fr;
+  }
+  nav {
+    display: none;
+  }
+  .banner h1 {
+    font-size: 2rem;
+  }
+}
