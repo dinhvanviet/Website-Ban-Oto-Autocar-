@@ -344,6 +344,9 @@ footer {
   .search-auth {
     display: none; /* Hide search on mobile for simplicity */
   }
+  #nav-menu {
+    display: none;
+  }
   #nav-menu.active {
     display: block;
     position: absolute;
