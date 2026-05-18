@@ -28,72 +28,7 @@ body {
   line-height: 1.6;
 }
 
-/* =========================================
-   2. HEADER & ĐIỀU HƯỚNG (PHIÊN BẢN CŨ)
-   Lưu ý: Phần này có thể đang bị ghi đè bởi 
-   phần "ĐỒNG BỘ HEADER VỚI INDEX" ở cuối file.
-   ========================================= */
-.header {
-  background: linear-gradient(135deg, rgb(4, 4, 44) 0%, rgb(4, 4, 44) 100%);
-  color: white;
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.search-bar {
-  display: flex;
-  gap: 8px;
-  flex: 1;
-  min-width: 200px;
-  max-width: 400px;
-}
-
-.search-input {
-  flex: 1;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text-primary);
-}
-
-.search-input::placeholder {
-  color: var(--text-secondary);
-}
-
-.search-btn {
-  padding: 10px 20px;
-  background: var(--secondary-color);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.search-btn:hover {
-  background: #dc2626;
-}
-
-/* Nút bật tắt bộ lọc trên Mobile */
+/* Nút bật tắt bộ lọc trên Mobile (Giữ lại từ phần cũ) */
 .sidebar-toggle {
   display: none;
   position: fixed;
@@ -111,6 +46,99 @@ body {
 }
 
 /* =========================================
+   2. HEADER CHÍNH (ĐỒNG BỘ VỚI INDEX)
+   ========================================= */
+header {
+  background: rgb(4, 4, 44);
+  color: #fff;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ff3e3e;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ff3e3e;
+}
+
+.search-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-auth input {
+  padding: 0 15px;
+  height: 36px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: #fff;
+  color: #0e0e0e;
+  box-sizing: border-box;
+}
+
+.btn-login {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  background: #ff3e3e;
+  padding: 0 18px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: #e60000;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* =========================================
    3. BỐ CỤC CHÍNH & SIDEBAR (BỘ LỌC)
    ========================================= */
 .container {
@@ -121,7 +149,6 @@ body {
   gap: 30px;
 }
 
-/* Sidebar hiển thị bộ lọc */
 .sidebar {
   width: 280px;
   background: var(--bg-card);
@@ -166,7 +193,6 @@ body {
   gap: 10px;
 }
 
-/* Tùy chỉnh Checkbox */
 .checkbox-label {
   display: flex;
   align-items: center;
@@ -189,7 +215,6 @@ body {
   accent-color: var(--primary-color);
 }
 
-/* Tùy chỉnh Select Box */
 .filter-select {
   width: 100%;
   padding: 10px 12px;
@@ -208,7 +233,6 @@ body {
   outline: none;
 }
 
-/* Tùy chỉnh thanh trượt (Slider) */
 .slider-container {
   display: flex;
   flex-direction: column;
@@ -235,16 +259,6 @@ body {
   box-shadow: var(--shadow);
 }
 
-.slider::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--primary-color);
-  cursor: pointer;
-  border: none;
-  box-shadow: var(--shadow);
-}
-
 .slider-value {
   font-size: 13px;
   color: var(--text-secondary);
@@ -252,7 +266,6 @@ body {
   font-weight: 600;
 }
 
-/* Nút áp dụng bộ lọc */
 .apply-btn {
   width: 100%;
   padding: 12px 20px;
@@ -302,38 +315,18 @@ body {
   gap: 20px;
 }
 
-/* Tabs trên cùng */
-.top-tabs {
-  display: flex;
-  gap: 10px;
-}
-
-.top-tab {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 600;
-  background-color: #e5e7eb;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.top-tab:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.top-tab.active {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #6d28d9 100%);
-  color: white;
-}
-
-/* Grid hiển thị thẻ xe */
 .cars-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* =========================================
@@ -374,7 +367,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Badge Mới / Cũ */
 .car-badge {
   position: absolute;
   top: 10px;
@@ -450,7 +442,6 @@ body {
   font-weight: 600;
 }
 
-/* Nút hành động trên Card */
 .car-actions {
   display: flex;
   gap: 10px;
@@ -473,34 +464,6 @@ body {
 .detail-btn:hover {
   background: #7c3aed;
   transform: translateY(-2px);
-}
-
-.contact-btn {
-  flex: 1;
-  padding: 10px 15px;
-  background: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.contact-btn:hover {
-  background: var(--secondary-color);
-  color: white;
-  border-color: var(--secondary-color);
-}
-
-/* Trạng thái không tìm thấy xe */
-.no-results {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--text-secondary);
-  font-size: 18px;
-  font-weight: 500;
 }
 
 /* =========================================
@@ -633,30 +596,12 @@ body {
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s;
-}
-
-.modal-actions button:hover {
-  background: var(--secondary-color);
-  color: white;
-}
-
-.modal-actions .detail-btn {
   background: var(--primary-color);
   color: white;
 }
 
-.modal-actions .detail-btn:hover {
+.modal-actions button:hover {
   background: #7c3aed;
-}
-
-.modal-actions .contact-btn {
-  background: var(--secondary-color);
-  color: white;
-  border: none;
-}
-
-.modal-actions .contact-btn:hover {
-  background: #dc2626;
 }
 
 /* =========================================
@@ -677,13 +622,6 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
-  .header-content {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .search-bar {
-    max-width: 100%;
-  }
 }
 
 /* Mobile lớn (dưới 768px) */
@@ -691,13 +629,13 @@ body {
   .sidebar-toggle {
     display: block;
   }
+
   .container {
     flex-direction: column;
     gap: 0;
     padding: 0;
   }
 
-  /* Sidebar trượt từ trái sang trên Mobile */
   .sidebar {
     position: fixed;
     top: 60px;
@@ -711,9 +649,11 @@ body {
     box-shadow: var(--shadow-hover);
     transition: left 0.3s ease;
   }
+
   .sidebar.show {
     left: 0;
   }
+
   .sidebar-close {
     display: block;
   }
@@ -721,41 +661,31 @@ body {
   .main-content {
     padding: 20px;
   }
+
   .cars-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  .header {
-    padding: 15px 0;
-  }
-  .header-content {
-    padding: 0 15px;
-  }
-  .logo h1 {
-    font-size: 22px;
-  }
-  .search-bar {
-    flex: 1;
-    min-width: 100%;
-    max-width: 100%;
-  }
+
   .section-title {
     font-size: 20px;
     margin-bottom: 20px;
   }
+
   .cars-section {
     margin-bottom: 40px;
   }
 
-  /* Đổi bố cục Card nằm ngang trên Mobile */
   .car-card {
     display: grid;
     grid-template-columns: 150px 1fr;
     height: fit-content;
   }
+
   .car-image-container {
     height: 150px;
   }
+
   .car-content {
     padding: 15px;
   }
@@ -763,147 +693,23 @@ body {
   .modal-content {
     width: 95%;
   }
+
   .modal-body {
     padding: 30px 20px 20px;
   }
+
   .modal-image {
     height: 250px;
     margin-bottom: 20px;
   }
+
   .modal-info {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 }
 
-/* Mobile nhỏ (dưới 480px) */
-@media (max-width: 480px) {
-  .logo h1 {
-    font-size: 18px;
-  }
-  .logo p {
-    display: none;
-  }
-  .section-title {
-    font-size: 18px;
-  }
-  .car-name {
-    font-size: 14px;
-  }
-  .car-price {
-    font-size: 16px;
-  }
-  .modal-title {
-    font-size: 20px;
-  }
-  .modal-price {
-    font-size: 24px;
-  }
-  .top-tabs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(90deg, #6a5af9, #8e44ad);
-  }
-}
-
-/* =========================================
-   8. ĐỒNG BỘ HEADER VỚI INDEX 
-   (Phần này đang được sử dụng chính thức 
-   cho thẻ <header> trong file HTML của bạn)
-   ========================================= */
-header {
-  background: rgb(4, 4, 44);
-  color: #fff;
-  padding: 15px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: #ff3e3e;
-  letter-spacing: 1px;
-}
-
-nav ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-}
-
-nav ul li a {
-  font-weight: 500;
-  color: #fff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: #ff3e3e;
-}
-
-/* Phần tìm kiếm & Đăng nhập */
-.search-auth {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.search-auth input {
-  padding: 0 15px;
-  height: 36px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background-color: #fff;
-  color: #0e0e0e;
-  box-sizing: border-box;
-}
-
-.btn-login {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  background: #ff3e3e;
-  padding: 0 18px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #ffffff !important;
-  text-decoration: none !important;
-  white-space: nowrap;
-  box-sizing: border-box;
-  transition: 0.3s;
-}
-
-.btn-login:hover {
-  background: #e60000;
-}
-
-/* Hamburger Menu cho Mobile */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #fff;
-  margin: 3px 0;
-  transition: 0.3s;
-}
-
+/* Mobile nhỏ (dưới 600px - Phần Header) */
 @media (max-width: 600px) {
   .hamburger {
     display: flex;
@@ -932,4 +738,32 @@ nav ul li a.active {
     gap: 10px;
     text-align: center;
   }
+}
+
+/* Mobile rất nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+  }
+  .section-title {
+    font-size: 18px;
+  }
+  .car-name {
+    font-size: 14px;
+  }
+  .car-price {
+    font-size: 16px;
+  }
+  .modal-title {
+    font-size: 20px;
+  }
+  .modal-price {
+    font-size: 24px;
+  }
+}
+/* Đổi màu đỏ cho menu khi trang đó đang hiển thị (Active) */
+header nav ul li a.active,
+header nav ul li.active > a {
+  color: var(--secondary-color) !important; /* Biến màu đỏ #ef4444 của bạn */
+  font-weight: bold;
 }
